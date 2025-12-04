@@ -1,32 +1,47 @@
-<!DOCTYPE html>
-<html>
-<body>
-  <h1 id="title">Halo, Bryan!</h1>
-  <button onclick="ubahTeks()">Klik Saya</button>
-
-  <script>
-    function ubahTeks() {
-      document.getElementById("title").innerText = "Teks telah berubah!";
-    }
-  </script>
-</body>
-</html>
-
 console.log("from script file");
 body {
   margin: 20px;
 }
           
-import { useState } from "react";
-function App() {
-const [text, setText] = useState("Halo,
-Mahasiswa!");
-return (
-<div>
-<h1>{text}</h1>
-<button onClick={() => setText("Teks telah
-berubah!")}>Klik Saya</button>
-</div>
-);
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,
+initial-scale=1.0">
+<title>GUI Sederhana</title>
+</head>
+<body>
+<h1 id="title">Halo, Bryan!</h1>
+<h2>Halo, Mahasiswa!</h2>
+<b> tebal</b>
+<i> miring</i>
+    <ol>
+      <li>satu</li>
+      <li>dua</li>
+    </ol>
+  <table>
+<tr>  <td> 1 </td>  <td> 2 </td></tr>
+<tr>  <td> 3 </td>  <td> 4 </td></tr>  
+  </table>
+
+<img src='https://raw.githubusercontent.com/bluefire7860/pbo/79175c6f73b5efc566ca8d39cba7d74581e27fe8/Screenshot%20(154).png'>
+
+  <form>
+<input type='text' value='cobaan'>
+<input type='submit' value='kirim'>
+    
+  </form>
+
+
+  
+<button onclick="ubahTeks()">Klik Saya</button>
+
+  
+<script>
+function ubahTeks() {
+document.getElementById("title").innerText = "Teks telah berubah!";
 }
-export default App;
+</script>
+</body>
+</html>
