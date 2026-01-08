@@ -1,107 +1,50 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UAS Semester 3 Bryan Louis</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-image: url('https://raw.githubusercontent.com/bluefire7860/pbo/main/Screenshot%20(154).png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .login-container {
-            background-color: rgba(24, 24, 27, 0.85);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            color: #ffffff;
-        }
-
-        .input-group {
-            margin-bottom: 1.2rem;
-            text-align: left;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 0.4rem;
-            color: #cccccc;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 12px;
-            background-color: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: #ffffff;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 1.05rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 0.5rem;
-        }
-
-        .btn-login {
-            background-color: #ffffff;
-            color: #000;
-            border: none;
-        }
-
-        .btn-cancel {
-            background-color: transparent;
-            color: #fff;
-            border: 1px solid #aaa;
-        }
-
-        .btn-logout {
-            background-color: #ef4444;
-            color: white;
-            border: none;
-            margin-top: 1.5rem;
-        }
-
-        #message {
-            text-align: center;
-            font-size: 0.9rem;
-            margin-bottom: 0.8rem;
-            min-height: 1.2em;
-        }
-
-        .success { color: #4ade80; }
-        .error { color: #f87171; }
-
-        #loginSuccess {
-            display: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UAS Semester 3 Bryan Louis PBO</title>
+<style>
+* { box-sizing: border-box; margin:0; padding:0; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+body {
+    background-image: url('https://raw.githubusercontent.com/bluefire7860/pbo/main/Screenshot%20(154).png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display:flex; justify-content:center; align-items:center; height:100vh;
+}
+.login-container {
+    background-color: rgba(24,24,27,0.85);
+    backdrop-filter: blur(10px);
+    padding:2.5rem;
+    border-radius:15px;
+    width:100%; max-width:400px;
+    text-align:center;
+    color:#fff;
+}
+.input-group {margin-bottom:1.2rem;text-align:left;}
+.input-group label {display:block;margin-bottom:0.4rem;color:#ccc;}
+.input-group input {
+    width:100%; padding:12px;
+    background-color: rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:8px;color:#fff;
+}
+button {
+    width:100%; padding:12px;border-radius:8px;font-size:1.05rem;font-weight:bold;cursor:pointer;margin-top:0.5rem;
+}
+.btn-login {background-color:#fff;color:#000;border:none;}
+.btn-cancel {background-color:transparent;color:#fff;border:1px solid #aaa;}
+.btn-logout {background-color:#ef4444;color:#fff;border:none;margin-top:1.5rem;}
+#message {text-align:center;font-size:0.9rem;margin-bottom:0.8rem;min-height:1.2em;}
+.success {color:#4ade80;}
+.error {color:#f87171;}
+#loginSuccess {display:none;}
+</style>
 </head>
 <body>
 
 <div class="login-container">
-
     <div id="loginBox">
         <h2>Login</h2>
         <form id="loginForm">
@@ -113,9 +56,7 @@
                 <label>Password</label>
                 <input type="password" id="password" required>
             </div>
-
             <p id="message"></p>
-
             <button type="submit" class="btn-login">Login</button>
             <button type="button" class="btn-cancel" id="cancelBtn">Cancel</button>
         </form>
@@ -126,7 +67,6 @@
         <p id="greeting" style="margin-top:1rem;"></p>
         <button class="btn-logout" id="logoutBtn">Logout</button>
     </div>
-
 </div>
 
 <script>
@@ -137,17 +77,31 @@ document.addEventListener("DOMContentLoaded", function () {
             this.username = username;
             this.password = password;
         }
+        checkPassword(input) {
+            return this.password === input;
+        }
+        greet() {
+            return `Hallo ${this.username}!`;
+        }
+    }
 
-        checkPassword(inputPassword) {
-            return this.password === inputPassword;
+    class AdminUser extends User {
+        greet() {
+            return `Hallo ${this.username}! Selamat datang!`;
+        }
+    }
+
+    class NormalUser extends User {
+        greet() {
+            return `Hallo ${this.username}! Apa kabar?`;
         }
     }
 
     class AuthApp {
         constructor() {
             this.users = [
-                new User("admin", "54321"),
-                new User("bryan", "12345")
+                new AdminUser("admin", "54321"),
+                new NormalUser("bryan", "12345")
             ];
 
             this.loginForm = document.getElementById("loginForm");
@@ -170,24 +124,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         login(e) {
             e.preventDefault();
-
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
 
             const user = this.users.find(u => u.username === username);
-
-            if (user && user.checkPassword(password)) {
+            if(user && user.checkPassword(password)){
                 localStorage.setItem("loggedUser", username);
-                this.showSuccess(username);
+                this.showSuccess(user);
             } else {
                 this.showError("Username atau Password salah!");
             }
         }
 
-        showSuccess(username) {
+        showSuccess(user) {
             this.loginBox.style.display = "none";
             this.loginSuccess.style.display = "block";
-            this.greeting.textContent = `Hallo ${username}! apa kabar!`;
+            this.greeting.textContent = user.greet(); // Polymorphism
         }
 
         showError(text) {
@@ -206,8 +158,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         checkSession() {
             const savedUser = localStorage.getItem("loggedUser");
-            if (savedUser) {
-                this.showSuccess(savedUser);
+            if(savedUser){
+                const user = this.users.find(u => u.username === savedUser);
+                if(user) this.showSuccess(user);
             }
         }
     }
