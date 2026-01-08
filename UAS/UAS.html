@@ -1,3 +1,8 @@
+console.log("from script file");
+body {
+  margin: 20px;
+}
+          
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -102,6 +107,7 @@
 
 <div class="login-container">
 
+    <!-- LOGIN -->
     <div id="loginBox">
         <h2>Login</h2>
         <form id="loginForm">
@@ -114,6 +120,7 @@
                 <input type="password" id="password" required>
             </div>
 
+            <!-- PESAN ERROR -->
             <p id="message"></p>
 
             <button type="submit" class="btn-login">Login</button>
@@ -121,6 +128,7 @@
         </form>
     </div>
 
+    <!-- SETELAH LOGIN -->
     <div id="loginSuccess">
         <h2 class="success">Login Berhasil</h2>
         <p id="greeting" style="margin-top:1rem;"></p>
